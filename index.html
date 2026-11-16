@@ -178,8 +178,8 @@ nav.m a[aria-current="page"]{color:var(--ch);border-color:var(--ch)}
 </div></div></section>
 
 <section id="tin-tuc" class="alt"><div class="w">
-<div class="hd"><p class="k">TIN TỨC</p><h2>Thông báo và thông cáo báo chí</h2></div>
-<div class="nw"><div><h3>Thông báo</h3><ul class="lst" id="ls-tb"></ul></div><div><h3>Thông cáo báo chí</h3><ul class="lst" id="ls-tc"></ul></div></div></div></section>
+<div class="hd"><p class="k">TIN TỨC</p><h2>Thông báo và tin mới</h2></div>
+<div class="nw" id="nw"></div></div></section>
 
 <section id="lien-he" class="cta"><div class="w g">
 <div><h2>Cùng xem xét từ điều kiện dự án.</h2><p>Điện mặt trời, ESS, thiết bị xanh, tư vấn môi trường. Chỉ cần số liệu mặt bằng và lượng điện tiêu thụ là có thể bắt đầu.</p></div>
@@ -226,19 +226,22 @@ document.getElementById('f').addEventListener('submit',function(e){e.preventDefa
 </script>
 <script>
 (function(){
-var L={'thong-bao':document.getElementById('ls-tb'),'thong-cao':document.getElementById('ls-tc')},dlg=document.getElementById('dlg');
+var box=document.getElementById('nw'),dlg=document.getElementById('dlg'),LIM=6,CATS={};
 function fmt(d){var p=String(d).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:d}
-function open_(p){document.getElementById('dc').textContent=p.category==='thong-cao'?'THÔNG CÁO BÁO CHÍ':'THÔNG BÁO';document.getElementById('dt').textContent=p.title;document.getElementById('dd').textContent=fmt(p.date);
+function g(f){return fetch(f,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()})}
+function open_(p){document.getElementById('dc').textContent=String(CATS[p.category]||'').toUpperCase();document.getElementById('dt').textContent=p.title;document.getElementById('dd').textContent=fmt(p.date);
 var b=document.getElementById('db');b.innerHTML='';String(p.content).split(/\n{2,}/).forEach(function(t){var e=document.createElement('p');e.textContent=t;b.appendChild(e)});
 if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
 document.getElementById('dx').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open')};
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
-function msg(u,t){var li=document.createElement('li');li.textContent=t;li.style.color='var(--mut)';u.appendChild(li)}
-fetch('posts.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){
-a.sort(function(x,y){return y.date<x.date?-1:1});
-Object.keys(L).forEach(function(c){var n=0;a.forEach(function(p){if(p.category!==c||n>=6)return;n++;
-var li=document.createElement('li'),k=document.createElement('a'),s=document.createElement('span');k.href='#tin-tuc';k.textContent=p.title;k.onclick=function(e){e.preventDefault();open_(p)};s.textContent=fmt(p.date);li.appendChild(k);li.appendChild(s);L[c].appendChild(li)});
-if(!n)msg(L[c],'Chưa có bài viết.')})}).catch(function(){Object.keys(L).forEach(function(c){msg(L[c],'Không tải được bài viết.')})});
+Promise.all([g('posts.json'),g('categories.json').catch(function(){return[{id:'thong-bao',name:'Thông báo'},{id:'thong-cao',name:'Thông cáo báo chí'}]})]).then(function(r){
+var all=r[0],cs=r[1];cs.forEach(function(c){CATS[c.id]=c.name});
+all.sort(function(x,y){return y.date<x.date?-1:1});box.innerHTML='';
+cs.forEach(function(c){var items=all.filter(function(p){return p.category===c.id}).slice(0,LIM);if(!items.length)return;
+var d=document.createElement('div'),h=document.createElement('h3'),u=document.createElement('ul');h.textContent=c.name;u.className='lst';
+items.forEach(function(p){var li=document.createElement('li'),k=document.createElement('a'),s=document.createElement('span');k.href='#tin-tuc';k.textContent=p.title;k.onclick=function(e){e.preventDefault();open_(p)};s.textContent=fmt(p.date);li.appendChild(k);li.appendChild(s);u.appendChild(li)});
+d.appendChild(h);d.appendChild(u);box.appendChild(d)});
+if(!box.children.length)box.textContent='Chưa có bài viết.'}).catch(function(){box.textContent='Không tải được bài viết.'});
 })();
 </script>
 <script src="site.js"></script>

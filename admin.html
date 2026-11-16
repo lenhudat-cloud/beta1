@@ -66,11 +66,11 @@ details{margin-top:14px;font-size:14px;color:var(--mut)}
 <h2 id="ft">Bài mới</h2>
 <label>Tiêu đề<input id="ti" maxlength="200"></label>
 <div class="row" style="grid-template-columns:1fr 1fr">
-<label>Chuyên mục<select id="ca"></select></label>
+<label>Chuyên mục (mục menu nơi bài hiển thị)<select id="ca"></select></label>
 <label>Ngày đăng<input id="da" type="date"></label>
 </div>
 <details class="cat" open>
-<summary>Quản lý chuyên mục</summary>
+<summary>Quản lý chuyên mục Tin tức (thêm, đổi tên, xóa)</summary>
 <label style="margin:10px 0 0">Tên chuyên mục<input id="cname" maxlength="60" placeholder="Ví dụ: Tuyển dụng"></label>
 <div class="btns">
 <button class="btn sm" id="cadd" type="button">+ Thêm chuyên mục mới</button>
@@ -88,6 +88,8 @@ details{margin-top:14px;font-size:14px;color:var(--mut)}
 (function(){
 var $=function(i){return document.getElementById(i)},cfg={},posts=[],psha=null,cats=[],csha=null,cur=null;
 var DEF=[{id:'thong-bao',name:'Thông báo'},{id:'thong-cao',name:'Thông cáo báo chí'}];
+var SYS=[{g:'Giới thiệu',items:[{id:'gioi-thieu',name:'Lời chào'},{id:'lich-su',name:'Lịch sử'},{id:'chung-nhan',name:'Chứng nhận · đăng ký'},{id:'chi-duong',name:'Chỉ đường'}]},{g:'Lĩnh vực hoạt động',items:[{id:'epc',name:'EPC điện mặt trời'},{id:'ess',name:'ESS'},{id:'thiet-bi',name:'Thiết bị môi trường'},{id:'tu-van',name:'Tư vấn môi trường'}]},{g:'Dự án',items:[{id:'du-an',name:'Dự án'}]},{g:'Liên hệ',items:[{id:'lien-he',name:'Liên hệ tư vấn'}]}];
+function isSys(id){return SYS.some(function(g){return g.items.some(function(c){return c.id===id})})}
 function say(t,bad){var e=$('st');e.textContent=t;e.style.color=bad?'var(--ch)':'var(--ok)'}
 function b64(s){return btoa(unescape(encodeURIComponent(s)))}
 function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\s/g,''))))}
@@ -98,9 +100,9 @@ function put(path,obj,sha,msg){var b={message:msg,content:b64(JSON.stringify(obj
 return api(path,'PUT',b).then(function(r){if(r.status===409||r.status===422)throw new Error('Tệp đã bị thay đổi ở nơi khác. Hãy tải lại trang và kết nối lại.');if(!r.ok)throw new Error('Lỗi '+r.status+'. Kiểm tra quyền Contents: Read and write của token.');return r.json()}).then(function(j){return j.content.sha})}
 function savePosts(msg){say('Đang lưu...');return put('posts.json',posts,psha,msg).then(function(s){psha=s;say('Đã lưu. Trang web sẽ cập nhật sau khoảng 1 đến 2 phút.')})}
 function saveCats(msg){say('Đang lưu...');return put('categories.json',cats,csha,msg).then(function(s){csha=s;say('Đã lưu chuyên mục. Trang web sẽ cập nhật sau khoảng 1 đến 2 phút.')})}
-function cname(id){var c=cats.filter(function(x){return x.id===id})[0];return c?c.name:id}
-function fillCats(sel){var s=$('ca');s.innerHTML='';cats.forEach(function(c){var o=document.createElement('option');o.value=c.id;o.textContent=c.name;s.appendChild(o)});if(sel)s.value=sel}
-function slug(n){var s=n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'d').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'muc';var id=s,i=2;while(cats.some(function(c){return c.id===id}))id=s+'-'+i++;return id}
+function cname(id){var c=cats.filter(function(x){return x.id===id})[0];if(c)return c.name;for(var i=0;i<SYS.length;i++){var d=SYS[i].items.filter(function(x){return x.id===id})[0];if(d)return SYS[i].g+' › '+d.name}return id}
+function fillCats(sel){var s=$('ca');s.innerHTML='';function grp(l,items){var g=document.createElement('optgroup');g.label=l;items.forEach(function(c){var o=document.createElement('option');o.value=c.id;o.textContent=c.name;g.appendChild(o)});s.appendChild(g)}grp('Tin tức',cats);SYS.forEach(function(g){grp(g.g,g.items)});if(sel)s.value=sel}
+function slug(n){var s=n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'d').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'muc';var id=s,i=2;while(isSys(id)||cats.some(function(c){return c.id===id}))id=s+'-'+i++;return id}
 function list(){var u=$('ls');u.innerHTML='';posts.slice().sort(function(a,b){return b.date<a.date?-1:1}).forEach(function(p){
 var li=document.createElement('li'),b=document.createElement('button'),s=document.createElement('small');b.type='button';b.textContent=p.title;s.textContent=fmt(p.date)+' · '+cname(p.category);b.appendChild(s);
 b.setAttribute('aria-current',!!cur&&cur.id===p.id);b.onclick=function(){pick(p)};li.appendChild(b);u.appendChild(li)})}
@@ -112,7 +114,7 @@ say('Đang kết nối...');
 Promise.all([getF('posts.json'),getF('categories.json')]).then(function(r){
 posts=r[0]?JSON.parse(unb64(r[0].content)):[];psha=r[0]?r[0].sha:null;
 cats=r[1]?JSON.parse(unb64(r[1].content)):JSON.parse(JSON.stringify(DEF));csha=r[1]?r[1].sha:null;
-posts.forEach(function(p){if(!cats.some(function(c){return c.id===p.category}))cats.push({id:p.category,name:p.category})});
+posts.forEach(function(p){if(!isSys(p.category)&&!cats.some(function(c){return c.id===p.category}))cats.push({id:p.category,name:p.category})});
 try{sessionStorage.setItem('cms_t',cfg.t)}catch(e){}
 $('ed').hidden=false;say('Đã kết nối. Có '+posts.length+' bài, '+cats.length+' chuyên mục.');blank()}).catch(function(e){say(e.message,1)})};
 $('nw').onclick=blank;
@@ -126,10 +128,10 @@ $('cadd').onclick=function(){var n=$('cname').value.trim();if(!n){say('Hãy nh�
 if(cats.some(function(c){return c.name.toLowerCase()===n.toLowerCase()})){say('Chuyên mục này đã có.',1);return}
 var c={id:slug(n),name:n};cats.push(c);
 saveCats('Thêm chuyên mục: '+n).then(function(){fillCats(c.id);$('cname').value=''}).catch(function(e){cats.pop();say(e.message,1)})};
-$('cren').onclick=function(){var id=$('ca').value,n=$('cname').value.trim();if(!n){say('Hãy nhập tên mới vào ô Tên chuyên mục.',1);return}
+$('cren').onclick=function(){var id=$('ca').value,n=$('cname').value.trim();if(isSys(id)){say('Đây là chuyên mục gắn với trang menu của website, không đổi tên hoặc xóa được. Chỉ chuyên mục thuộc Tin tức mới sửa được.',1);return}if(!n){say('Hãy nhập tên mới vào ô Tên chuyên mục.',1);return}
 var c=cats.filter(function(x){return x.id===id})[0],old=c.name;c.name=n;
 saveCats('Đổi tên chuyên mục: '+n).then(function(){fillCats(id);list();$('cname').value=''}).catch(function(e){c.name=old;say(e.message,1)})};
-$('cdel').onclick=function(){var id=$('ca').value;
+$('cdel').onclick=function(){var id=$('ca').value;if(isSys(id)){say('Đây là chuyên mục gắn với trang menu của website, không đổi tên hoặc xóa được. Chỉ chuyên mục thuộc Tin tức mới sửa được.',1);return}
 if(cats.length<=1){say('Phải còn ít nhất một chuyên mục.',1);return}
 if(posts.some(function(p){return p.category===id&&p!==cur})||(cur&&posts.some(function(p){return p.id===cur.id&&p.category===id}))){say('Chuyên mục còn bài viết. Hãy chuyển hoặc xóa các bài đó trước.',1);return}
 if(!confirm('Xóa chuyên mục "'+cname(id)+'"?'))return;var old=cats.slice();cats=cats.filter(function(c){return c.id!==id});

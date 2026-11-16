@@ -131,12 +131,15 @@ dialog .bd p{margin:0 0 14px;white-space:pre-line}
 .pg .bc a{color:#ffa44d;text-decoration:none}
 nav.m a[aria-current="page"]{color:var(--ch);border-color:var(--ch)}
 .pgc{padding:56px 0}
+.ar{background:var(--sf);border:1px solid var(--ln);border-top:4px solid var(--ch);padding:24px;margin-bottom:20px}
+.ar h3{font-size:22px;margin:4px 0 10px}.ar p{margin:0 0 12px;white-space:pre-line}.ar p.k{margin:0}
+.ah{font-size:20px;margin:26px 0 14px;color:var(--ch)}.at{font-size:clamp(24px,3vw,32px);margin-bottom:22px}
 </style>
 </head>
 <body><div class="promo"><div class="w"><span>Ưu đãi: gửi hóa đơn điện 12 tháng gần nhất để nhận đánh giá sơ bộ công suất điện mặt trời mái nhà.</span><a href="lien-he.html">Gửi yêu cầu →</a></div></div><header><div class="w"><a class="logo" href="index.html">Phương Nam Energy</a><nav class="m" aria-label="Điều hướng chính"><a href="index.html">Trang chủ</a><div class="dd"><a href="gioi-thieu.html">Giới thiệu</a><div class="sub"><a href="gioi-thieu.html">Lời chào</a><a href="lich-su.html">Lịch sử</a><a href="chung-nhan.html">Chứng nhận · đăng ký</a><a href="chi-duong.html">Chỉ đường</a></div></div><div class="dd"><a href="linh-vuc.html">Lĩnh vực hoạt động</a><div class="sub"><a href="linh-vuc.html#epc">EPC điện mặt trời</a><a href="linh-vuc.html#ess">ESS</a><a href="linh-vuc.html#thiet-bi">Thiết bị môi trường</a><a href="linh-vuc.html#tu-van">Tư vấn môi trường</a></div></div><a href="du-an.html" aria-current="page">Dự án</a><a href="tin-tuc.html">Tin tức</a><a href="lien-he.html">Liên hệ tư vấn</a></nav><div class="hot">Hotline<b>028 0000 0000</b></div></div></header><main id="top"><div class="pg"><div class="w"><p class="bc"><a href="index.html">Trang chủ</a> / Dự án</p><h1>Dự án</h1></div></div><section id="du-an"><div class="w">
 <div class="hd"><p class="k">DỰ ÁN</p><h2><em>Dự án</em> tiêu biểu</h2><p>Chọn dự án trong danh sách để xem khu vực, năm hoàn thành và công suất. Tất cả là dữ liệu mẫu.</p></div>
 <div class="pj"><div class="dt" id="pd" aria-live="polite"></div><ul id="pl"></ul></div>
-</div></section></main><footer><div class="w">
+</div></section><section class="pgc" hidden><div class="w"><h2 class="at">Bài viết</h2><div id="art" data-cats="du-an"></div></div></section></main><footer><div class="w">
 <div><a class="logo" href="index.html">Phương Nam Energy</a><p>Từ EPC điện mặt trời đến ESS, thiết bị xanh và tư vấn môi trường, một đội phụ trách từ rà soát điều kiện dự án đến vận hành.</p></div>
 <div><p>Điện thoại: 028 0000 0000<br>Email: info@example.com<br>Thứ Hai đến thứ Sáu, 09:00 đến 18:00</p></div>
 <div class="cp">Công ty Cổ phần Năng lượng Phương Nam | Đại diện Nguyễn Văn A | MSDN 0312 345 678 | Số 00 Đường ○○, Quận 1, TP. Hồ Chí Minh (địa chỉ giả định)<br>© 2026 Phương Nam Energy. Bảo lưu mọi quyền.</div>
@@ -150,5 +153,6 @@ var q=pd.children;q[1].textContent=j[0].toUpperCase();q[2].textContent=j[1];q[3]
 [].forEach.call(pl.children,function(li,k){li.firstChild.setAttribute('aria-current',k===n)})}
 J.forEach(function(j,k){var li=document.createElement('li'),bt=document.createElement('button');bt.type='button';bt.innerHTML='<small></small>';bt.insertBefore(document.createTextNode(j[1]),bt.firstChild);bt.lastChild.textContent=j[0]+' · '+j[3];bt.onclick=function(){pj(k)};li.appendChild(bt);pl.appendChild(li)});
 pj(0);})();</script><script src="site.js"></script>
+<script src="bai-viet.js"></script>
 </body>
 </html>

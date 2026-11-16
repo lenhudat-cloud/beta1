@@ -1,0 +1,38 @@
+[
+  {
+    "id": "b1",
+    "title": "EPC điện mặt trời",
+    "content": "Khảo sát mặt bằng, thiết kế, mua sắm, thi công.",
+    "anchor": "epc"
+  },
+  {
+    "id": "b2",
+    "title": "ESS",
+    "content": "Giảm phụ tải đỉnh, lưu trữ kết hợp năng lượng tái tạo.",
+    "anchor": "ess"
+  },
+  {
+    "id": "b3",
+    "title": "Quản lý năng lượng",
+    "content": "Giám sát sản lượng, vận hành và bảo trì (O&M).",
+    "anchor": ""
+  },
+  {
+    "id": "b4",
+    "title": "Khí thải · xử lý nước",
+    "content": "Thiết bị giảm phát thải và xử lý nước.",
+    "anchor": "thiet-bi"
+  },
+  {
+    "id": "b5",
+    "title": "Tuần hoàn tài nguyên",
+    "content": "Thu hồi nhiệt thải, tái chế phụ phẩm.",
+    "anchor": ""
+  },
+  {
+    "id": "b6",
+    "title": "Tư vấn môi trường",
+    "content": "Đo đạc, phân tích, báo cáo giấy phép.",
+    "anchor": "tu-van"
+  }
+]

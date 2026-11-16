@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lĩnh vực hoạt động – Phương Nam Energy</title>
+<meta name="description" content="Công ty Cổ phần Năng lượng Phương Nam: EPC điện mặt trời, ESS, thiết bị xử lý khí thải và nước, tư vấn môi trường.">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6f4;--sf:#fff;--ink:#2b2b2b;--mut:#5f5f5f;--ln:#e0dedb;--ch:#d71920;--chd:#262626;--gold:#c4560a;--onch:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a1a;--sf:#242424;--ink:#f2f2f2;--mut:#b0b0b0;--ln:#3a3a3a;--ch:#ff5a5f;--chd:#0f0f0f;--gold:#ff9a3c;--onch:#1a1a1a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1a1a;--sf:#242424;--ink:#f2f2f2;--mut:#b0b0b0;--ln:#3a3a3a;--ch:#ff5a5f;--chd:#0f0f0f;--gold:#ff9a3c;--onch:#1a1a1a;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Be Vietnam Pro",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Source Serif 4",serif;line-height:1.2;margin:0}
+.promo{background:var(--chd);color:#f2f2f2;font-size:14px;padding-top:env(safe-area-inset-top,0px)}
+.promo .w{display:flex;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.promo a{color:#ffa44d;text-decoration:none;font-weight:500}
+header{position:sticky;top:0;z-index:30;background:var(--sf);border-bottom:1px solid var(--ln)}
+header .w{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
+.logo{font:700 21px "Source Serif 4",serif;color:var(--ch);text-decoration:none;white-space:nowrap}
+nav.m{display:flex;gap:4px 20px;flex-wrap:wrap;font-size:15px;font-weight:500}
+.dd{position:relative;display:flex}
+.dd>a,nav.m>a{display:block;padding:6px 0;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+.dd>a:hover,nav.m>a:hover{border-color:var(--gold)}
+.sub{display:none;position:absolute;left:-14px;top:100%;min-width:210px;background:var(--sf);border:1px solid var(--ln);border-top:3px solid var(--gold);padding:6px 0;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.dd:hover .sub,.dd:focus-within .sub{display:block}
+.sub a{display:block;padding:8px 16px;text-decoration:none;white-space:nowrap}
+.sub a:hover{background:var(--bg)}
+.hot{font-size:13px;line-height:1.3;text-align:right;color:var(--mut);white-space:nowrap}
+.hot b{display:block;font-size:17px;color:var(--ink)}
+.btn{display:inline-block;padding:12px 22px;border-radius:4px;font:600 15px "Be Vietnam Pro",sans-serif;text-decoration:none;border:1.5px solid var(--ch);background:var(--ch);color:var(--onch);cursor:pointer}
+.btn.g{background:#f08a24;border-color:#f08a24;color:#1f1f1f}
+.btn.o{background:transparent;color:#fff;border-color:#9a9a9a}
+.hero{background:var(--chd);color:#f2f2f2}
+.slide{display:none;padding:96px 0 64px;min-height:500px}
+.slide.on{display:block}
+.slide:nth-child(1){background:linear-gradient(120deg,#262626 50%,#8a1419)}
+.slide:nth-child(2){background:linear-gradient(120deg,#262626 50%,#6b3510)}
+.slide:nth-child(3){background:linear-gradient(120deg,#262626 50%,#3b3b3b)}
+.slide:nth-child(4){background:linear-gradient(120deg,#262626 50%,#a8470b)}
+.k{color:var(--gold);font-weight:600;font-size:14px;margin:0 0 10px;letter-spacing:.04em}
+.slide .k{color:#ffa44d}
+.slide h1,.slide h2{font-size:clamp(32px,5vw,54px);max-width:15em;color:#fff}
+.slide p.d{max-width:38em;font-size:18px;color:#d6d6d6;margin:20px 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.ctl{display:flex;align-items:center;gap:10px;padding-bottom:22px}
+.ctl button.a{width:42px;height:42px;border-radius:50%;border:1.5px solid #9a9a9a;background:transparent;color:#fff;font-size:18px;cursor:pointer}
+.dots{display:flex;gap:8px;margin-left:8px}
+.dots button{width:12px;height:12px;border-radius:50%;padding:0;background:#6a6a6a;border:0;cursor:pointer}
+.dots button[aria-current="true"]{background:#ffa44d}
+section{padding:72px 0}
+.hd{margin-bottom:34px}
+.hd h2{font-size:clamp(26px,3.4vw,38px)}
+.hd p{color:var(--mut);max-width:40em;margin:10px 0 0}
+.hd em{font-style:normal;color:var(--ch)}
+.six{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.six a{display:block;background:var(--sf);border:1px solid var(--ln);border-top:4px solid var(--ch);padding:24px;text-decoration:none;min-height:170px}
+.six a:hover{border-top-color:var(--gold)}
+.six b{font:700 34px "Source Serif 4",serif;color:var(--ln)}
+.six h3{font-size:20px;margin:4px 0 6px}
+.six p{margin:0;color:var(--mut);font-size:15px}
+.nums{background:var(--chd);color:#f2f2f2}
+.nums .hd h2{color:#fff}.nums .hd em{color:#ffa44d}
+.nums .g{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #3a3a3a}
+.nums .g div{padding:26px 20px 0 0}
+.nums b{display:block;font:700 clamp(34px,4.4vw,52px) "Source Serif 4",serif;color:#ffa44d;line-height:1.1}
+.nums span{color:#d6d6d6;font-size:15px}
+.note{font-size:13px;color:var(--mut);margin-top:16px}
+.nums .note{color:#b0b0b0}
+.pj{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--ln);background:var(--sf)}
+.pj .dt{padding:32px;min-height:300px}
+.pj .ph{height:140px;margin:-32px -32px 22px;background:linear-gradient(135deg,var(--ch),var(--chd))}
+.pj .dt h3{font-size:24px;margin:4px 0 8px}
+.pj .dt strong{color:var(--ch)}
+.pj ul{list-style:none;margin:0;padding:0;border-left:1px solid var(--ln)}
+.pj li button{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--ln);padding:18px 22px;cursor:pointer;border-left:4px solid transparent}
+.pj li:last-child button{border-bottom:0}
+.pj li button[aria-current="true"]{border-left-color:var(--ch);background:var(--bg);font-weight:600}
+.pj li small{display:block;color:var(--mut);font-weight:400}
+.tech{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tech article{background:var(--sf);border:1px solid var(--ln);padding:24px}
+.tech h3{font-size:19px;margin:2px 0 8px;color:var(--ch)}
+.tech p{margin:0;color:var(--mut);font-size:15px}
+.alt{background:var(--sf);border-block:1px solid var(--ln)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--ln);margin-bottom:34px}
+.tabs a{padding:11px 18px;text-decoration:none;font-weight:600;font-size:15px;color:var(--mut);border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs a[aria-current="true"]{color:var(--ch);border-color:var(--gold)}
+.pn{display:none}.pn.on{display:block}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.two p{margin:0 0 14px}
+dl.f{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px;background:var(--bg);border:1px solid var(--ln);border-top:4px solid var(--gold);padding:24px;margin:0}
+dl.f dt{color:var(--mut)}dl.f dd{margin:0;font-weight:500}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--ln);max-width:44em}
+.tl li{position:relative;padding:0 0 24px 18px}
+.tl li::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--sf)}
+.tl b{font:700 20px "Source Serif 4",serif;color:var(--ch);display:block}
+.lst{list-style:none;margin:0;padding:0;border-top:1px solid var(--ln)}
+.lst li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--ln)}
+.lst span{color:var(--mut);font-size:14px;white-space:nowrap}
+.nw{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.nw h3{font-size:22px;margin-bottom:14px}
+.cta{background:var(--ch);color:var(--onch)}
+.cta .g{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.cta h2{font-size:clamp(26px,3.4vw,36px);color:var(--onch)}
+.cta p{margin:10px 0 0}
+form{display:grid;gap:10px}
+input,textarea{font:inherit;color:#2b2b2b;background:#fff;border:1px solid var(--ln);border-radius:4px;padding:11px 12px;width:100%}
+#ok{margin:0;min-height:1.5em;font-weight:500}
+.cta .btn{background:#262626;border-color:#262626;color:#fff}
+footer{background:var(--chd);color:#d6d6d6;padding:44px 0 80px;font-size:14px}
+footer .logo{color:#fff}
+footer .w{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
+footer .cp{grid-column:1/-1;border-top:1px solid #3a3a3a;padding-top:18px}
+.bar{display:none}
+@media(max-width:900px){.hot{display:none}.six,.tech{grid-template-columns:1fr 1fr}.nums .g{grid-template-columns:1fr 1fr}.pj,.two,.nw,.cta .g,footer .w{grid-template-columns:1fr;gap:28px}.pj ul{border-left:0;border-top:1px solid var(--ln)}.pj .dt{min-height:0}.sub{position:static;box-shadow:none}.bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--chd);padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));gap:8px}.bar a{flex:1;text-align:center}}
+@media(max-width:560px){.six,.tech{grid-template-columns:1fr}section{padding:52px 0}.slide{padding-top:56px}header .w{flex-wrap:wrap;padding-top:10px;padding-bottom:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+dialog{max-width:640px;width:92%;border:1px solid var(--ln);border-top:4px solid var(--ch);background:var(--sf);color:var(--ink);padding:28px}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog h3{font-size:24px;margin:4px 0 6px}
+dialog .bd p{margin:0 0 14px;white-space:pre-line}
+.lst a{text-decoration:none}.lst a:hover{color:var(--ch)}
+.pg{background:var(--chd);color:#f2f2f2;padding:44px 0}
+.pg h1{font-size:clamp(28px,4vw,42px);color:#fff}
+.pg .bc{font-size:14px;color:#b0b0b0;margin:0 0 8px}
+.pg .bc a{color:#ffa44d;text-decoration:none}
+nav.m a[aria-current="page"]{color:var(--ch);border-color:var(--ch)}
+.pgc{padding:56px 0}
+</style>
+</head>
+<body><div class="promo"><div class="w"><span>Ưu đãi: gửi hóa đơn điện 12 tháng gần nhất để nhận đánh giá sơ bộ công suất điện mặt trời mái nhà.</span><a href="lien-he.html">Gửi yêu cầu →</a></div></div><header><div class="w"><a class="logo" href="index.html">Phương Nam Energy</a><nav class="m" aria-label="Điều hướng chính"><a href="index.html">Trang chủ</a><div class="dd"><a href="gioi-thieu.html">Giới thiệu</a><div class="sub"><a href="gioi-thieu.html">Lời chào</a><a href="lich-su.html">Lịch sử</a><a href="chung-nhan.html">Chứng nhận · đăng ký</a><a href="chi-duong.html">Chỉ đường</a></div></div><div class="dd"><a href="linh-vuc.html" aria-current="page">Lĩnh vực hoạt động</a><div class="sub"><a href="linh-vuc.html#epc">EPC điện mặt trời</a><a href="linh-vuc.html#ess">ESS</a><a href="linh-vuc.html#thiet-bi">Thiết bị môi trường</a><a href="linh-vuc.html#tu-van">Tư vấn môi trường</a></div></div><a href="du-an.html">Dự án</a><a href="tin-tuc.html">Tin tức</a><a href="lien-he.html">Liên hệ tư vấn</a></nav><div class="hot">Hotline<b>028 0000 0000</b></div></div></header><main id="top"><div class="pg"><div class="w"><p class="bc"><a href="index.html">Trang chủ</a> / Lĩnh vực hoạt động</p><h1>Lĩnh vực hoạt động</h1></div></div><section id="linh-vuc"><div class="w">
+<div class="hd"><p class="k">LĨNH VỰC HOẠT ĐỘNG</p><h2>Năng lượng và môi trường, <em>sáu lĩnh vực</em> trong một đội</h2><p>Từ thiết bị phát điện, lưu trữ đến giảm phát thải và giấy phép. Chọn lĩnh vực phù hợp với điều kiện dự án của bạn.</p></div>
+<div class="six" id="six">
+<a id="epc" href="lien-he.html"><b>01</b><h3>EPC điện mặt trời</h3><p>Khảo sát mặt bằng, thiết kế, mua sắm, thi công.</p></a>
+<a id="ess" href="lien-he.html"><b>02</b><h3>ESS</h3><p>Giảm phụ tải đỉnh, lưu trữ kết hợp năng lượng tái tạo.</p></a>
+<a href="lien-he.html"><b>03</b><h3>Quản lý năng lượng</h3><p>Giám sát sản lượng, vận hành và bảo trì (O&amp;M).</p></a>
+<a id="thiet-bi" href="lien-he.html"><b>04</b><h3>Khí thải · xử lý nước</h3><p>Thiết bị giảm phát thải và xử lý nước.</p></a>
+<a href="lien-he.html"><b>05</b><h3>Tuần hoàn tài nguyên</h3><p>Thu hồi nhiệt thải, tái chế phụ phẩm.</p></a>
+<a id="tu-van" href="lien-he.html"><b>06</b><h3>Tư vấn môi trường</h3><p>Đo đạc, phân tích, báo cáo giấy phép.</p></a>
+</div></div></section></main><footer><div class="w">
+<div><a class="logo" href="index.html">Phương Nam Energy</a><p>Từ EPC điện mặt trời đến ESS, thiết bị xanh và tư vấn môi trường, một đội phụ trách từ rà soát điều kiện dự án đến vận hành.</p></div>
+<div><p>Điện thoại: 028 0000 0000<br>Email: info@example.com<br>Thứ Hai đến thứ Sáu, 09:00 đến 18:00</p></div>
+<div class="cp">Công ty Cổ phần Năng lượng Phương Nam | Đại diện Nguyễn Văn A | MSDN 0312 345 678 | Số 00 Đường ○○, Quận 1, TP. Hồ Chí Minh (địa chỉ giả định)<br>© 2026 Phương Nam Energy. Bảo lưu mọi quyền.</div>
+</div></footer><div class="bar"><a class="btn g" href="lien-he.html">Tư vấn dự án</a><a class="btn o" href="tel:02800000000">Gọi 028 0000 0000</a></div><script src="site.js"></script>
+</body>
+</html>

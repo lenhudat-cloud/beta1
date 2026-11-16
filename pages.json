@@ -1,0 +1,23 @@
+{
+  "gioi-thieu": {
+    "content": "Kính chào quý khách hàng và quý cổ đông. Phương Nam bắt đầu từ năm 2012 với các công trình điện mặt trời mái nhà, nay mở rộng sang lưu trữ năng lượng, thiết bị môi trường và tư vấn giấy phép.\n\nChúng tôi làm việc theo một nguyên tắc: một đội phụ trách xuyên suốt, từ rà soát điều kiện dự án đến vận hành sau bàn giao.",
+    "mst": "0312 345 678",
+    "von": "200 tỷ đồng",
+    "daidien": "Nguyễn Văn A",
+    "nhansu": "Hơn 400 người"
+  },
+  "chung-nhan": {
+    "content": "Giấy chứng nhận đăng ký doanh nghiệp do Sở Tài chính TP. Hồ Chí Minh cấp. Công ty hoạt động theo Luật Doanh nghiệp, có Hội đồng quản trị và Ban kiểm soát theo Điều lệ.\n\nTài liệu công bố thông tin cho cổ đông được cập nhật tại danh sách bên cạnh."
+  },
+  "chi-duong": {
+    "address": "Số 00 Đường ○○, Quận 1, TP. Hồ Chí Minh",
+    "hours": "09:00 đến 18:00, thứ Hai đến thứ Sáu (nghỉ trưa 12:00 đến 13:00)",
+    "phone": "028 0000 0000"
+  },
+  "lien-he": {
+    "address": "Số 00 Đường ○○, Quận 1, TP. Hồ Chí Minh",
+    "phone": "028 0000 0000",
+    "email": "info@example.com",
+    "hours": "09:00 đến 18:00, thứ Hai đến thứ Sáu"
+  }
+}

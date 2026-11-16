@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Công ty Cổ phần Phương Nam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7f3;--surface:#ffffff;--ink:#14233b;--muted:#53607a;--line:#d9ddd3;--chang:#1f3a5f;--sen:#3e6b5a;--gold:#a8741f;--on-chang:#f6f7f3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1829;--surface:#16233a;--ink:#eef0ea;--muted:#a3adc2;--line:#2b3b57;--chang:#8fb0dd;--sen:#7fb59f;--gold:#d9a54e;--on-chang:#0f1829;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1829;--surface:#16233a;--ink:#eef0ea;--muted:#a3adc2;--line:#2b3b57;--chang:#8fb0dd;--sen:#7fb59f;--gold:#d9a54e;--on-chang:#0f1829;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Be Vietnam Pro",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap}
+.logo{font:700 20px "Source Serif 4",serif;text-decoration:none;color:var(--chang)}
+nav{display:flex;gap:22px;flex-wrap:wrap;font-size:15px}
+nav a{text-decoration:none;color:var(--muted);padding:6px 0}
+nav a:hover{color:var(--ink)}
+h1,h2,h3{font-family:"Source Serif 4",serif;line-height:1.15;margin:0;color:var(--ink)}
+.hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:start}
+h1{font-size:clamp(34px,5.4vw,58px);font-weight:700;letter-spacing:-.01em}
+.lead{color:var(--muted);font-size:19px;max-width:34em;margin:22px 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:4px;font-weight:500;text-decoration:none;border:1.5px solid var(--chang)}
+.btn.p{background:var(--chang);color:var(--on-chang)}
+.btn.s{color:var(--chang)}
+.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold);padding:26px}
+.card h2{font-size:21px;margin-bottom:14px}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
+dt{color:var(--muted)}
+dd{margin:0;font-weight:500}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+h2.t{font-size:clamp(28px,3.6vw,38px);margin-bottom:12px}
+.sub{color:var(--muted);max-width:38em;margin:0 0 36px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--surface)}
+.cols article{padding:28px;border-right:1px solid var(--line)}
+.cols article:last-child{border-right:0}
+.cols h3{font-size:22px;margin-bottom:10px;color:var(--sen)}
+.cols p{margin:0;color:var(--muted);font-size:16px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.about p{margin:0 0 16px}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.list span{color:var(--muted);font-size:14px;white-space:nowrap}
+form{display:grid;gap:14px;max-width:520px}
+label{font-size:15px;font-weight:500;display:grid;gap:6px}
+input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:11px 12px;width:100%}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact address{font-style:normal;line-height:1.9}
+footer{padding:32px 0 40px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#ok{color:var(--sen);font-weight:500;min-height:1.6em;margin:0}
+@media(max-width:820px){.hero .wrap,.about,.contact{grid-template-columns:1fr;gap:36px}.cols{grid-template-columns:1fr}.cols article{border-right:0;border-bottom:1px solid var(--line)}.cols article:last-child{border-bottom:0}.hero{padding-top:44px}section{padding:52px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<a class="logo" href="#top">Phương Nam JSC</a>
+<nav aria-label="Điều hướng chính">
+<a href="#gioi-thieu">Giới thiệu</a>
+<a href="#linh-vuc">Lĩnh vực</a>
+<a href="#co-dong">Quan hệ cổ đông</a>
+<a href="#lien-he">Liên hệ</a>
+</nav>
+</div>
+</header>
+<main id="top">
+<div class="hero">
+<div class="wrap">
+<div>
+<h1>Công ty Cổ phần Phương Nam</h1>
+<p class="lead">Chúng tôi cung cấp giải pháp logistics, phân phối và công nghệ cho doanh nghiệp tại Việt Nam, vận hành minh bạch trước cổ đông và đối tác.</p>
+<div class="btns">
+<a class="btn p" href="#lien-he">Liên hệ hợp tác</a>
+<a class="btn s" href="#co-dong">Xem thông tin cổ đông</a>
+</div>
+</div>
+<aside class="card" aria-label="Thông tin pháp lý">
+<h2>Thông tin doanh nghiệp</h2>
+<dl>
+<dt>Tên đầy đủ</dt><dd>Công ty Cổ phần Phương Nam</dd>
+<dt>Tên giao dịch</dt><dd>Phuong Nam Joint Stock Company</dd>
+<dt>Mã số doanh nghiệp</dt><dd>0312 345 678</dd>
+<dt>Vốn điều lệ</dt><dd>200 tỷ đồng</dd>
+<dt>Người đại diện</dt><dd>Nguyễn Văn A, Tổng Giám đốc</dd>
+<dt>Trụ sở</dt><dd>Quận 1, TP. Hồ Chí Minh</dd>
+</dl>
+</aside>
+</div>
+</div>
+
+<section id="gioi-thieu">
+<div class="wrap about">
+<div>
+<h2 class="t">Giới thiệu</h2>
+<p class="sub">Thành lập năm 2012, Phương Nam hoạt động theo Luật Doanh nghiệp và có Hội đồng quản trị, Ban kiểm soát điều hành theo Điều lệ công ty.</p>
+</div>
+<div>
+<p>Chúng tôi bắt đầu với một kho hàng nhỏ tại TP. Hồ Chí Minh. Nay công ty phục vụ khách hàng ở nhiều tỉnh thành, với đội ngũ hơn 400 nhân sự.</p>
+<p>Mỗi hợp đồng đều có người phụ trách rõ ràng, báo cáo tiến độ đúng hạn và chứng từ đầy đủ để khách hàng dễ đối chiếu.</p>
+</div>
+</div>
+</section>
+
+<section id="linh-vuc">
+<div class="wrap">
+<h2 class="t">Lĩnh vực hoạt động</h2>
+<p class="sub">Ba mảng kinh doanh chính, đăng ký theo giấy chứng nhận đăng ký doanh nghiệp.</p>
+<div class="cols">
+<article><h3>Vận tải và kho bãi</h3><p>Vận chuyển đường bộ, kho lạnh và kho ngoại quan cho hàng tiêu dùng và nông sản.</p></article>
+<article><h3>Phân phối</h3><p>Phân phối hàng tiêu dùng nhanh đến hệ thống siêu thị, cửa hàng tiện lợi và đại lý.</p></article>
+<article><h3>Giải pháp công nghệ</h3><p>Phần mềm quản lý kho, theo dõi đơn hàng và hóa đơn điện tử cho doanh nghiệp vừa và nhỏ.</p></article>
+</div>
+</div>
+</section>
+
+<section id="co-dong">
+<div class="wrap">
+<h2 class="t">Quan hệ cổ đông</h2>
+<p class="sub">Tài liệu công bố thông tin dành cho cổ đông. Nội dung dưới đây là ví dụ, hãy thay bằng tài liệu thật của công ty.</p>
+<ul class="list">
+<li><a href="#co-dong">Thông báo mời họp Đại hội đồng cổ đông thường niên</a><span>15/04/2026</span></li>
+<li><a href="#co-dong">Báo cáo tài chính đã kiểm toán năm 2025</a><span>30/03/2026</span></li>
+<li><a href="#co-dong">Báo cáo thường niên 2025</a><span>30/03/2026</span></li>
+<li><a href="#co-dong">Điều lệ công ty</a><span>Bản hiện hành</span></li>
+<li><a href="#co-dong">Nghị quyết Hội đồng quản trị</a><span>Quý III/2026</span></li>
+</ul>
+</div>
+</section>
+
+<section id="lien-he">
+<div class="wrap contact">
+<div>
+<h2 class="t">Liên hệ</h2>
+<address>
+Tầng 12, Tòa nhà Phương Nam, Quận 1, TP. Hồ Chí Minh<br>
+Điện thoại: 028 3800 0000<br>
+Email: <a href="mailto:info@phuongnam.example">info@phuongnam.example</a><br>
+Giờ làm việc: 8:00 đến 17:30, thứ Hai đến thứ Sáu
+</address>
+</div>
+<form id="f">
+<label>Họ và tên<input name="n" required autocomplete="name"></label>
+<label>Email<input name="e" type="email" required autocomplete="email"></label>
+<label>Nội dung<textarea name="m" rows="4" required></textarea></label>
+<button class="btn p" type="submit">Gửi liên hệ</button>
+<p id="ok" role="status"></p>
+</form>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<span>© 2026 Công ty Cổ phần Phương Nam. Mã số doanh nghiệp 0312 345 678.</span>
+<span>Giấy chứng nhận đăng ký doanh nghiệp do Sở Tài chính TP. Hồ Chí Minh cấp.</span>
+</div>
+</footer>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+e.preventDefault();
+var n=this.n.value.trim();
+document.getElementById('ok').textContent='Cảm ơn '+n+'. Chúng tôi sẽ phản hồi qua email trong 1 ngày làm việc. (Bản mẫu, chưa kết nối máy chủ.)';
+this.reset();
+});
+</script>
+</body>
+</html>

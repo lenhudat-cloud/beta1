@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Quản trị bài viết</title>
+<style>
+:root{--bg:#f7f6f4;--sf:#fff;--ink:#2b2b2b;--mut:#5f5f5f;--ln:#e0dedb;--ch:#d71920;--ok:#1d7a3d;--onch:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1a1a;--sf:#242424;--ink:#f2f2f2;--mut:#b0b0b0;--ln:#3a3a3a;--ch:#ff5a5f;--ok:#5fd18a;--onch:#1a1a1a;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 system-ui,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.w{max-width:1000px;margin:0 auto;padding:24px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:0 0 12px}
+.mut{color:var(--mut);font-size:14px;margin:0 0 20px}
+.card{background:var(--sf);border:1px solid var(--ln);border-top:4px solid var(--ch);padding:22px;margin-bottom:20px}
+label{display:grid;gap:5px;font-weight:600;font-size:14px;margin-bottom:12px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--ln);border-radius:4px;padding:10px 12px;width:100%}
+textarea{min-height:280px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.btn{font-weight:600;font-size:15px;font-family:inherit;padding:10px 20px;border-radius:4px;border:1.5px solid var(--ch);background:var(--ch);color:var(--onch);cursor:pointer}
+.btn.s{background:transparent;color:var(--ch)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+#ls{list-style:none;margin:12px 0 0;padding:0;border-top:1px solid var(--ln)}
+#ls button{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--ln);border-left:4px solid transparent;padding:10px 12px;cursor:pointer}
+#ls button[aria-current="true"]{border-left-color:var(--ch);background:var(--bg)}
+#ls small{display:block;color:var(--mut)}
+#st{min-height:1.6em;font-weight:600;margin:10px 0 0}
+details{margin-top:14px;font-size:14px;color:var(--mut)}
+@media(max-width:760px){.grid,.row{grid-template-columns:1fr}}
+:focus-visible{outline:3px solid var(--ch);outline-offset:2px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Quản trị bài viết</h1>
+<p class="mut">Viết, sửa, xóa bài trong mục Tin tức. Bài được lưu vào tệp posts.json trên GitHub; trang web tự đọc tệp này.</p>
+
+<div class="card" id="login">
+<h2>1. Kết nối GitHub</h2>
+<div class="row">
+<label>Tài khoản<input id="o" value="lenhudat-cloud" autocomplete="off"></label>
+<label>Repository<input id="r" value="beta1" autocomplete="off"></label>
+<label>Nhánh<input id="b" value="main" autocomplete="off"></label>
+</div>
+<label>Mã truy cập cá nhân (token)<input id="t" type="password" autocomplete="off" placeholder="github_pat_..."></label>
+<div class="btns"><button class="btn" id="cn" type="button">Kết nối</button></div>
+<details><summary>Cách tạo token</summary>
+<ol><li>GitHub: Settings &gt; Developer settings &gt; Personal access tokens &gt; Fine-grained tokens &gt; Generate new token.</li>
+<li>Repository access: chọn Only select repositories, chọn repository của bạn.</li>
+<li>Permissions &gt; Repository permissions &gt; Contents: Read and write.</li>
+<li>Đặt ngày hết hạn ngắn, tạo token, dán vào ô trên. Token chỉ lưu trong tab trình duyệt này và mất khi bạn đóng tab. Không gửi token cho ai.</li></ol></details>
+</div>
+
+<p id="st" role="status"></p>
+
+<div class="grid" id="ed" hidden>
+<div class="card" style="margin:0"><div class="btns"><button class="btn" id="nw" type="button">+ Bài mới</button></div><ul id="ls"></ul></div>
+<div class="card" style="margin:0">
+<h2 id="ft">Bài mới</h2>
+<label>Tiêu đề<input id="ti" maxlength="200"></label>
+<div class="row" style="grid-template-columns:1fr 1fr">
+<label>Chuyên mục<select id="ca"><option value="thong-bao">Thông báo</option><option value="thong-cao">Thông cáo báo chí</option></select></label>
+<label>Ngày đăng<input id="da" type="date"></label>
+</div>
+<label>Nội dung (cách một dòng trống để xuống đoạn)<textarea id="co"></textarea></label>
+<div class="btns"><button class="btn" id="sv" type="button">Lưu và đăng</button><button class="btn s" id="dl" type="button">Xóa bài</button></div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},cfg={},posts=[],sha=null,cur=null;
+function say(t,bad){var e=$('st');e.textContent=t;e.style.color=bad?'var(--ch)':'var(--ok)'}
+function enc(s){return btoa(unescape(encodeURIComponent(s)))}
+function dec(s){return decodeURIComponent(escape(atob(s.replace(/\s/g,''))))}
+function api(m,body){var u='https://api.github.com/repos/'+encodeURIComponent(cfg.o)+'/'+encodeURIComponent(cfg.r)+'/contents/posts.json'+(m==='GET'?'?ref='+encodeURIComponent(cfg.b):'');
+return fetch(u,{method:m,headers:{'Authorization':'Bearer '+cfg.t,'Accept':'application/vnd.github+json'},body:body?JSON.stringify(body):undefined})}
+function fmt(d){var p=(d||'').split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:d}
+function list(){var u=$('ls');u.innerHTML='';posts.slice().sort(function(a,b){return b.date<a.date?-1:1}).forEach(function(p){
+var li=document.createElement('li'),b=document.createElement('button'),s=document.createElement('small');b.type='button';b.textContent=p.title;s.textContent=fmt(p.date)+' · '+(p.category==='thong-cao'?'Thông cáo':'Thông báo');b.appendChild(s);
+b.setAttribute('aria-current',cur&&cur.id===p.id);b.onclick=function(){pick(p)};li.appendChild(b);u.appendChild(li)})}
+function pick(p){cur=p;$('ft').textContent=p.title?'Sửa bài':'Bài mới';$('ti').value=p.title;$('ca').value=p.category;$('da').value=p.date;$('co').value=p.content;$('dl').hidden=!posts.some(function(x){return x.id===p.id});list()}
+function blank(){pick({id:'p'+Date.now(),title:'',category:'thong-bao',date:new Date().toISOString().slice(0,10),content:''})}
+function commit(msg){say('Đang lưu...');
+var body={message:msg,content:enc(JSON.stringify(posts,null,2)+'\n'),branch:cfg.b};if(sha)body.sha=sha;
+return api('PUT',body).then(function(r){if(r.status===409||r.status===422)throw new Error('Tệp đã bị thay đổi ở nơi khác. Hãy bấm Kết nối lại để tải bản mới.');if(!r.ok)throw new Error('Lỗi '+r.status+'. Kiểm tra quyền Contents: Read and write của token.');return r.json()}).then(function(j){sha=j.content.sha;say('Đã lưu. Trang web sẽ cập nhật sau khoảng 1 đến 2 phút.')})}
+$('cn').onclick=function(){cfg={o:$('o').value.trim(),r:$('r').value.trim(),b:$('b').value.trim()||'main',t:$('t').value.trim()};
+if(!cfg.o||!cfg.r||!cfg.t){say('Hãy nhập đủ tài khoản, repository và token.',1);return}
+say('Đang kết nối...');
+api('GET').then(function(r){if(r.status===404){posts=[];sha=null;return}
+if(r.status===401)throw new Error('Token không đúng hoặc đã hết hạn.');if(!r.ok)throw new Error('Lỗi '+r.status+'. Kiểm tra tên repository và quyền của token.');
+return r.json().then(function(j){sha=j.sha;posts=JSON.parse(dec(j.content))})}).then(function(){
+try{sessionStorage.setItem('cms_t',cfg.t)}catch(e){}
+$('ed').hidden=false;say('Đã kết nối. Có '+posts.length+' bài.');blank()}).catch(function(e){say(e.message,1)})};
+$('nw').onclick=blank;
+$('sv').onclick=function(){var t=$('ti').value.trim(),c=$('co').value.trim();if(!t||!c){say('Cần có tiêu đề và nội dung.',1);return}
+cur.title=t;cur.category=$('ca').value;cur.date=$('da').value||new Date().toISOString().slice(0,10);cur.content=c;
+var had=posts.some(function(x){return x.id===cur.id});if(!had)posts.push(cur);
+commit((had?'Sửa bài: ':'Thêm bài: ')+t).then(function(){pick(cur)}).catch(function(e){if(!had)posts.pop();say(e.message,1)})};
+$('dl').onclick=function(){if(!cur||!confirm('Xóa bài này?'))return;var old=posts.slice();posts=posts.filter(function(x){return x.id!==cur.id});
+commit('Xóa bài: '+cur.title).then(blank).catch(function(e){posts=old;say(e.message,1)})};
+try{var t=sessionStorage.getItem('cms_t');if(t)$('t').value=t}catch(e){}
+})();
+</script>
+</body>
+</html>

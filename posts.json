@@ -1,0 +1,44 @@
+[
+  {
+    "id": "p1",
+    "title": "Buổi giới thiệu dự án điện mặt trời mái nhà và ESS tại khu công nghiệp",
+    "category": "thong-bao",
+    "date": "2026-10-31",
+    "content": "Công ty tổ chức buổi giới thiệu dự án điện mặt trời mái nhà kết hợp ESS dành cho doanh nghiệp trong khu công nghiệp.\n\nBuổi giới thiệu trình bày cách đánh giá sơ bộ công suất, phương án đấu nối và dự kiến thời gian hoàn vốn. Đây là bài viết mẫu."
+  },
+  {
+    "id": "p2",
+    "title": "Ra mắt website mới",
+    "category": "thong-bao",
+    "date": "2026-10-25",
+    "content": "Website mới của công ty đã chính thức hoạt động, tập hợp thông tin về lĩnh vực hoạt động, dự án và tài liệu công bố thông tin. Đây là bài viết mẫu."
+  },
+  {
+    "id": "p3",
+    "title": "Lịch đào tạo an toàn hiện trường cho nhà thầu",
+    "category": "thong-bao",
+    "date": "2026-10-19",
+    "content": "Công ty thông báo lịch đào tạo an toàn hiện trường dành cho các nhà thầu tham gia dự án. Đây là bài viết mẫu."
+  },
+  {
+    "id": "p4",
+    "title": "Hoàn thành dự án tích hợp điện mặt trời mái nhà và ESS",
+    "category": "thong-cao",
+    "date": "2026-10-07",
+    "content": "Công ty đã hoàn thành và nghiệm thu dự án tích hợp điện mặt trời mái nhà và hệ thống lưu trữ năng lượng cho một khu công nghiệp. Đây là bài viết mẫu."
+  },
+  {
+    "id": "p5",
+    "title": "Tổ chức đào tạo tiêu chuẩn an toàn công trường ESS",
+    "category": "thong-cao",
+    "date": "2026-10-01",
+    "content": "Công ty tổ chức khóa đào tạo tiêu chuẩn an toàn công trường ESS cho đội ngũ kỹ thuật và đối tác. Đây là bài viết mẫu."
+  },
+  {
+    "id": "p6",
+    "title": "Giải pháp tiết kiệm năng lượng cho hệ thống xử lý nước",
+    "category": "thong-cao",
+    "date": "2026-09-25",
+    "content": "Công ty trình bày trường hợp tiết kiệm năng lượng cho hệ thống xử lý nước thải bằng điện mặt trời mái công trình. Đây là bài viết mẫu."
+  }
+]

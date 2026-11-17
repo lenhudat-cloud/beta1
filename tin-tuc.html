@@ -150,7 +150,7 @@ if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
 document.getElementById('dx').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open')};
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
 Promise.all([g('posts.json'),g('categories.json').catch(function(){return[{id:'thong-bao',name:'Thông báo'},{id:'thong-cao',name:'Thông cáo báo chí'}]})]).then(function(r){
-var all=r[0],cs=r[1];cs.forEach(function(c){CATS[c.id]=c.name});
+var all=r[0].filter(function(p){return !p.publishAt||Date.parse(p.publishAt)<=Date.now()}),cs=r[1];cs.forEach(function(c){CATS[c.id]=c.name});
 all.sort(function(x,y){return y.date<x.date?-1:1});box.innerHTML='';
 cs.forEach(function(c){var items=all.filter(function(p){return p.category===c.id}).slice(0,LIM);if(!items.length)return;
 var d=document.createElement('div'),h=document.createElement('h3'),u=document.createElement('ul');h.textContent=c.name;u.className='lst';
